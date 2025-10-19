@@ -1,3 +1,5 @@
+# Fuente de datos se descargo titanic.csv desde Kaggle  
+# autor: regis munez fecha: octubre 25
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler, LabelEncoder
@@ -6,7 +8,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # 1. CARGAR DATASET
-df = pd.read_csv('titanic.csv')  # Descargar de Kaggle primero
+df = pd.read_csv('titanic.csv')  
 
 print("=" * 60)
 print("PREPROCESAMIENTO TITANIC CON SCIKIT-LEARN")
@@ -138,5 +140,5 @@ df_final.to_csv('titanic_preprocessed_sklearn.csv', index=False)
 print(f"\n✓ Dataset procesado guardado: titanic_preprocessed_sklearn.csv")
 
 print("\n" + "=" * 60)
-print("PREPROCESAMIENTO COMPLETADO EXITOSAMENTE")
+print("PREPROCESAMIENTO COMPLETADO EXITOSAMENTE DE TAREA 1: CON SCIKIT-LEARN ")
 print("=" * 60)
