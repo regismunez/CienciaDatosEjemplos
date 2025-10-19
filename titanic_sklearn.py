@@ -1,3 +1,4 @@
+# CIENCIA DE DATOS: MOD-2 CLASE 1
 # Fuente de datos se descargo titanic.csv desde Kaggle  
 # autor: regis munez fecha: octubre 25
 import pandas as pd
