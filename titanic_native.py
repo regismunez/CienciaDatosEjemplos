@@ -1,3 +1,7 @@
+# CIENCIA DE DATOS: MOD-2 CLASE 1 - MODO NATIVO
+# Fuente de datos se descargo titanic.csv desde Kaggle  
+# autor: regis munez fecha: octubre 25
+
 import pandas as pd
 import numpy as np
 from collections import Counter
@@ -182,5 +186,5 @@ df_final.to_csv('titanic_preprocessed_native.csv', index=False)
 print(f"\n✓ Dataset procesado guardado: titanic_preprocessed_native.csv")
 
 print("\n" + "=" * 60)
-print("PREPROCESAMIENTO COMPLETADO EXITOSAMENTE")
+print("PREPROCESAMIENTO COMPLETADO EXITOSAMENTE DE CLASE 1 - MODO NATIVO")
 print("=" * 60)
