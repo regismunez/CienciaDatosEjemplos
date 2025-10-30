@@ -2,6 +2,7 @@
 EXPLORACIÓN Y PREPROCESAMIENTO DE DATOS PARA DEEP LEARNING
 Predicción de Cáncer de Mama usando MLPClassifier
 Dataset: Breast Cancer Wisconsin (Diagnostic)
+Tarea 2.1
 """
 
 import pandas as pd
@@ -26,6 +27,7 @@ print("="*80)
 print("EXPLORACIÓN Y PREPROCESAMIENTO DE DATOS PARA DEEP LEARNING")
 print("Predicción de Cáncer de Mama")
 print("="*80)
+
 
 # ============================================================================
 # FASE 1: EXPLORACIÓN Y SELECCIÓN DEL DATASET
@@ -211,6 +213,7 @@ print("\n" + "="*80)
 print(" FASE 1 COMPLETADA")
 print("="*80)
 
+
 # ============================================================================
 # FASE 2: PREPROCESAMIENTO Y CONSTRUCCIÓN DEL PIPELINE
 # ============================================================================
@@ -320,6 +323,7 @@ plt.close()
 print("\n" + "="*80)
 print(" FASE 2 COMPLETADA")
 print("="*80)
+
 
 # ============================================================================
 # FASE 3: VALIDACIÓN CRUZADA Y EVALUACIÓN DEL MODELO
@@ -468,8 +472,9 @@ print("\n" + "="*80)
 print("✓ FASE 3 COMPLETADA")
 print("="*80)
 
+
 # ============================================================================
-# FASE 4: REPORTE Y CONCLUSIONES
+# FASE 4: CONCLUSIONES
 # ============================================================================
 
 print("\n" + "="*80)
@@ -509,109 +514,6 @@ MEJORES HIPERPARÁMETROS:
 {grid_search.best_params_}
 """)
 
-print("\n" + "="*60)
-print("CONCLUSIONES")
-print("="*60)
-
-print("""
-1. IMPORTANCIA DEL PREPROCESAMIENTO EN MODELOS DE DEEP LEARNING:
-   
-   El preprocesamiento de datos demostró ser fundamental para el éxito
-   del modelo de red neuronal:
-   
-   • Escalamiento (StandardScaler): Normalizar las características fue
-     crucial dado que las variables médicas tienen rangos muy diferentes.
-     Sin escalamiento, las características con valores grandes dominarían
-     el proceso de aprendizaje.
-   
-   • Eliminación de columnas irrelevantes: IDs y columnas no informativas
-     fueron removidas para evitar ruido en el modelo.
-   
-   • Análisis exploratorio: Permitió identificar la estructura de los
-     datos, detectar valores atípicos y comprender la distribución de
-     clases antes del modelado.
-   
-   IMPACTO: El preprocesamiento adecuado permitió que el modelo alcanzara
-   alta precisión (>95%) desde la primera iteración.
-
-2. UTILIDAD DEL USO DE PIPELINES PARA ESTANDARIZAR PROCESOS:
-   
-   La implementación de pipelines en scikit-learn proporcionó múltiples
-   beneficios:
-   
-   • Reproducibilidad: Todo el flujo de procesamiento está encapsulado,
-     garantizando que los mismos pasos se apliquen consistentemente.
-   
-   • Prevención de data leakage: El escalamiento se ajusta solo con datos
-     de entrenamiento y se aplica a los datos de prueba, evitando fugas
-     de información.
-   
-   • Código limpio y mantenible: Reduce errores y facilita la integración
-     de nuevos componentes de procesamiento.
-   
-   • Optimización simplificada: GridSearchCV puede optimizar tanto
-     hiperparámetros del modelo como del preprocesamiento de forma unificada.
-   
-   IMPACTO: El pipeline permitió experimentar con diferentes configuraciones
-   de forma segura y eficiente.
-
-3. VALOR DEL USO DE VALIDACIÓN CRUZADA PARA MODELOS MÁS ROBUSTOS:
-   
-   La validación cruzada demostró ser esencial para:
-   
-   • Estimación realista del rendimiento: La exactitud media de validación
-     cruzada ({cv_scores.mean():.4f}) mostró que el modelo generaliza bien,
-     con baja variabilidad entre folds (std: {cv_scores.std():.4f}).
-   
-   • Detección de sobreajuste: La diferencia entre entrenamiento y prueba
-     fue mínima (<5%), indicando que el modelo no está sobreajustado.
-   
-   • Optimización de hiperparámetros: GridSearchCV exploró sistemáticamente
-     el espacio de hiperparámetros, mejorando la configuración inicial.
-   
-   • Confiabilidad: Usar 5 folds proporciona múltiples evaluaciones
-     independientes, dando mayor confianza en el rendimiento final.
-   
-   IMPACTO: La validación cruzada garantiza que el modelo será robusto
-   al enfrentar nuevos datos no vistos en producción.
-
-4. ANÁLISIS DE RESULTADOS FINALES:
-   
-   El modelo final alcanzó métricas excelentes:
-   
-   • Exactitud de {accuracy_opt*100:.2f}%: Clasifica correctamente la gran
-     mayoría de casos.
-   
-   • Alta Precisión ({precision_opt:.4f}): Pocos falsos positivos, minimizando
-     diagnósticos innecesarios.
-   
-   • Alto Recall ({recall_opt:.4f}): Detecta la mayoría de casos malignos,
-     crucial en diagnóstico médico.
-   
-   • F1-Score balanceado ({f1_opt:.4f}): Equilibrio óptimo entre precisión
-     y recall.
-   
-   INTERPRETACIÓN: El modelo es confiable para asistir en el diagnóstico
-   de cáncer de mama, con bajo riesgo de falsos negativos (casos malignos
-   no detectados).
-
-5. RECOMENDACIONES Y TRABAJO FUTURO:
-   
-   • Implementar técnicas de ensemble (Random Forest, Gradient Boosting)
-     para comparar rendimiento con redes neuronales.
-   
-   • Explorar arquitecturas más profundas o usar regularización adicional
-     (dropout) para datasets más complejos.
-   
-   • Considerar análisis de importancia de características para
-     interpretabilidad clínica.
-   
-   • Validar el modelo con datos externos para confirmar su capacidad
-     de generalización en diferentes poblaciones.
-   
-   • Implementar explicabilidad con técnicas como SHAP o LIME para
-     generar confianza en entornos clínicos.
-""")
 
 print("\n" + "="*60)
 print("ARCHIVOS GENERADOS")
@@ -918,27 +820,3 @@ for i, (archivo, descripcion) in enumerate(archivos_generados, 1):
     print(f"  {i}. {archivo}")
     print(f"     → {descripcion}\n")
 
-print("="*80)
-print(" ANÁLISIS COMPLETO FINALIZADO EXITOSAMENTE")
-print("="*80)
-
-print(f"""
-ESTADÍSTICAS FINALES:
-  • Dataset procesado: {len(df)} muestras
-  • Variables analizadas: {X.shape[1]}
-  • Exactitud final: {accuracy_opt:.4f} ({accuracy_opt*100:.2f}%)
-  • Modelo: Red Neuronal Multicapa (MLP)
-  • Arquitectura optimizada: {grid_search.best_params_['classifier__hidden_layer_sizes']}
-  • Validación: 5-fold Cross-Validation
-  • Archivos generados: {len(archivos_generados)}
-
-PRÓXIMOS PASOS SUGERIDOS:
-  1. Revisar los gráficos generados para análisis visual
-  2. Cargar el modelo guardado para realizar nuevas predicciones
-  3. Explorar técnicas de ensemble (combinar múltiples modelos)
-  4. Implementar análisis de interpretabilidad (SHAP/LIME)
-  5. Validar con datasets externos
-
-¡Gracias por utilizar este análisis automatizado!
-Para preguntas o mejoras, consultar la documentación de scikit-learn.
-""")
